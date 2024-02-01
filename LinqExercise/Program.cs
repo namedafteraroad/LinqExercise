@@ -25,13 +25,13 @@ namespace LinqExercise
 
             var sumNumbers = numbers.Sum(w => w);
             Console.WriteLine(sumNumbers);
-
+            Console.WriteLine();
             //TODO: Print the Average of numbers
             Console.WriteLine("Average of numbers in Array");
 
             var avgNumbers = numbers.Average(w => w);
             Console.WriteLine(avgNumbers);
-
+            Console.WriteLine();
             //TODO: Order numbers in ascending order and print to the console
             Console.WriteLine("Ascending Order:");
 
@@ -41,7 +41,7 @@ namespace LinqExercise
             {  
                 Console.WriteLine(num);
             }
-
+            Console.WriteLine();
             //TODO: Order numbers in descending order and print to the console
 
             Console.WriteLine("Descending Order:");
@@ -52,7 +52,7 @@ namespace LinqExercise
                 Console.WriteLine(num);
             }
 
-
+            Console.WriteLine();
             //TODO: Print to the console only the numbers greater than 6
             Console.WriteLine("Greater than 6");
 
@@ -63,7 +63,7 @@ namespace LinqExercise
             }
 
 
-
+            Console.WriteLine();
             //TODO: Order numbers in any order (ascending or desc) but only print 4 of them **foreach loop only!**
             Console.WriteLine("Numbers in order but only printing 4");
 
@@ -73,7 +73,7 @@ namespace LinqExercise
                 Console.WriteLine(num2);
             }
 
-
+            Console.WriteLine();
             //TODO: Change the value at index 4 to your age, then print the numbers in descending order
             Console.WriteLine("Change index 4 to age, decending order");
 
@@ -83,13 +83,16 @@ namespace LinqExercise
                 Console.WriteLine(num3);
             }
 
-            
-            
-            
+
+            Console.WriteLine();
+            Console.WriteLine();
+
 
 
             // List of employees ****Do not remove this****
-            var employees = CreateEmployees();
+            //var employees = CreateEmployees();
+            //In-Class
+            List<Employee> employees = CreateEmployees();
 
             //TODO: Print all the employees' FullName properties to the console only if their FirstName starts with a C OR an S and order this in ascending order by FirstName.
 
@@ -99,7 +102,7 @@ namespace LinqExercise
             { 
                 Console.WriteLine(fullNameVar.FullName); 
             }
-
+            Console.WriteLine();
             //TODO: Print all the employees' FullName and Age who are over the age 26 to the console and order this by Age first and then by FirstName in the same result.
             Console.WriteLine("Fullname and Age Over 26");
 
@@ -109,12 +112,12 @@ namespace LinqExercise
             {
                 Console.WriteLine($"{fNameAge26.FullName}, {fNameAge26.Age}");
             }
-
+            Console.WriteLine();
             //TODO: Print the Sum of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
             Console.WriteLine("Sum of YOE 10 Age 35");
-            int sumYOE1035 = employees.Where(w => w.YearsOfExperience <= 10 && w.Age > 35).Sum(w => w.YearsOfExperience);
+            var sumYOE1035 = employees.Where(w => w.YearsOfExperience <= 10 && w.Age > 35).Sum(w => w.YearsOfExperience);
             Console.WriteLine(sumYOE1035);
-
+            Console.WriteLine();
 
 
             //TODO: Now print the Average of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
@@ -122,16 +125,15 @@ namespace LinqExercise
 
             var avgYOE1035 = employees.Where(w => w.YearsOfExperience <= 10 && w.Age > 35).Average(w => w.YearsOfExperience);
             Console.WriteLine(avgYOE1035);
-
+            Console.WriteLine();
             //TODO: Add an employee to the end of the list without using employees.Add()
             //use append
 
             //employees.Append()
+            var newEmployee = new Employee() { FirstName = "Ian", LastName = "Malcolm", Age = 41, YearsOfExperience = 25 };
+            employees.Append(newEmployee).ToList().ForEach(w => Console.WriteLine(w.FullName));
 
-
-            Console.WriteLine();
-
-            Console.ReadLine();
+           
         }
 
         #region CreateEmployeesMethod
